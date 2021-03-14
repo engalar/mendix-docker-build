@@ -12,7 +12,7 @@ FROM ${ROOTFS_IMAGE} AS builder
 ARG BUILD_PATH=project
 ARG DD_API_KEY
 # CF buildpack version
-ARG CF_BUILDPACK=v4.14.1
+ARG CF_BUILDPACK=v4.14.4
 # Exclude the logfilter binary by default
 ARG EXCLUDE_LOGFILTER=true
 
@@ -23,9 +23,10 @@ ARG EXCLUDE_LOGFILTER=true
 # 4. Delete CF buildpack zip archive
 # 5. Update ownership of /opt/mendix so that the app can run as a non-root user
 # 6. Update permissions of /opt/mendix so that the app can run as a non-root user
+COPY cf-mendix-buildpack.zip /tmp/cf-mendix-buildpack.zip
 RUN mkdir -p /opt/mendix/buildpack /opt/mendix/build &&\
     echo "CF Buildpack version ${CF_BUILDPACK}" &&\
-    curl -fsSL https://github.com/mendix/cf-mendix-buildpack/releases/download/${CF_BUILDPACK}/cf-mendix-buildpack.zip -o /tmp/cf-mendix-buildpack.zip && \
+    #curl -fsSL https://github.com/mendix/cf-mendix-buildpack/releases/download/${CF_BUILDPACK}/cf-mendix-buildpack.zip -o /tmp/cf-mendix-buildpack.zip && \
     python3 -m zipfile -e /tmp/cf-mendix-buildpack.zip /opt/mendix/buildpack/ &&\
     rm /tmp/cf-mendix-buildpack.zip &&\
     chgrp -R 0 /opt/mendix &&\
