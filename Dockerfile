@@ -15,6 +15,8 @@ ARG DD_API_KEY
 ARG CF_BUILDPACK=v4.14.4
 # Exclude the logfilter binary by default
 ARG EXCLUDE_LOGFILTER=true
+#
+BLOBSTORE=https://repo.eingsoft.com/artifactory/store/mendix
 
 # Each comment corresponds to the script line:
 # 1. Create all directories needed by scripts
