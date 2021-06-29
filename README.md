@@ -1,3 +1,4 @@
+![](mendix-ci.png)
 # Docker Mendix Buildpack
 
 ![Test status](https://github.com/mendix/docker-mendix-buildpack/workflows/Test/badge.svg)
